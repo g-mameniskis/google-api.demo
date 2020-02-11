@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Value {
 
     private Long id;
-    private String quote;
+    private java.lang.String quote;
 
     public Value() {
     }
@@ -15,7 +15,7 @@ public class Value {
         return this.id;
     }
 
-    public String getQuote() {
+    public java.lang.String getQuote() {
         return this.quote;
     }
 
@@ -23,12 +23,12 @@ public class Value {
         this.id = id;
     }
 
-    public void setQuote(String quote) {
+    public void setQuote(java.lang.String quote) {
         this.quote = quote;
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return "Value{" +
                 "id=" + id +
                 ", quote='" + quote + '\'' +

@@ -5,33 +5,35 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Quote {
 
-    private String type;
-    private Value value;
+//    private String type;
+    private java.lang.String kind;
+//    private Value value;
+    private Value items;
 
     public Quote() {
     }
 
-    public String getType() {
-        return type;
+    public java.lang.String getKind() {
+        return kind;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setKind(java.lang.String kind) {
+        this.kind = kind;
     }
 
-    public Value getValue() {
-        return value;
+    public Value getItems() {
+        return items;
     }
 
-    public void setValue(Value value) {
-        this.value = value;
+    public void setItems(Value items) {
+        this.items = items;
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return "Quote{" +
-                "type='" + type + '\'' +
-                ", value=" + value +
+                "type='" + kind + '\'' +
+                ", value=" + items +
                 '}';
     }
 }

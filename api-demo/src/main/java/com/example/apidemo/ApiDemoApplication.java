@@ -14,7 +14,7 @@ public class ApiDemoApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(ApiDemoApplication.class);
 
-	public static void main(String[] args) {
+	public static void main(Value[] args) {
 		SpringApplication.run(ApiDemoApplication.class, args);
 	}
 
@@ -27,7 +27,10 @@ public class ApiDemoApplication {
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			Quote quote = restTemplate.getForObject(
-					"https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+					// Example URL from (https://spring.io/guides/gs/consuming-rest/)
+//					"https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+					// Google API URL
+					"https://www.googleapis.com/books/v1/volumes/mFT_CgAAQBAJ", Quote.class);
 			log.info(quote.toString());
 		};
 	}
