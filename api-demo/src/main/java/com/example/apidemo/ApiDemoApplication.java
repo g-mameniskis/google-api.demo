@@ -14,7 +14,7 @@ public class ApiDemoApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(ApiDemoApplication.class);
 
-	public static void main(Value[] args) {
+	public static void main(String[] args) {
 		SpringApplication.run(ApiDemoApplication.class, args);
 	}
 
@@ -27,10 +27,20 @@ public class ApiDemoApplication {
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			Quote quote = restTemplate.getForObject(
-					// Example URL from (https://spring.io/guides/gs/consuming-rest/)
-//					"https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-					// Google API URL
-					"https://www.googleapis.com/books/v1/volumes/mFT_CgAAQBAJ", Quote.class);
+					"https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+//			https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey ---> Google Books Example for Volumes
+//			String url = (String.format(https://www.googleapis.com/books/v1
+//							/%s -> volumes or users
+//							?q= -> beginning of query
+//							%s -> search for volumes that contain this string
+//							+
+//							%s -> inTitle, inAuthor, etc.
+//							:keyes -> user input (text is in author name)
+//							&key=%s ->
+//							,
+//							firstVariable, secondVariable, thirdVariable, fourthVariable)); ---> Google books example with variables
+//			firs variable  = volumes OR
+//			https://www.googleapis.com/books/v1/mylibrary/bookshelves/0/addVolume?volumeId=NRWlitmahXkC&key=yourAPIKey
 			log.info(quote.toString());
 		};
 	}

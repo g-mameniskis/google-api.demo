@@ -2,25 +2,22 @@ package com.example.apidemo.model;
 
 public class Book {
 
-    private final String id;
-    private final String title;
-    private final String authorName;
+//    Example:
+//    https://www.googleapis.com/books/v1/volumes/gK98gXR8onwC
 
-    public Book(String id, String title, String authorName) {
-        this.id = id;
-        this.title = title;
-        this.authorName = authorName;
+    private final VolumeInfo volumeInfo;
+    private final ImageLinks imageLinks;
+
+    public Book(VolumeInfo volumeInfo, ImageLinks imageLinks) {
+        this.volumeInfo = volumeInfo;
+        this.imageLinks = imageLinks;
     }
 
-    public String getId() {
-        return id;
+    public VolumeInfo getVolumeInfo() {
+        return volumeInfo;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthorName() {
-        return authorName;
+    public ImageLinks getImageLinks() {
+        return imageLinks;
     }
 }
