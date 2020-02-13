@@ -14,6 +14,13 @@ public class ApiDemoApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(ApiDemoApplication.class);
 
+	private String var1;
+	private String var2;
+	private String var3;
+	private String var4;
+
+	
+
 	public static void main(String[] args) {
 		SpringApplication.run(ApiDemoApplication.class, args);
 	}
@@ -30,11 +37,11 @@ public class ApiDemoApplication {
 					"https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
 //			https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey ---> Google Books Example for Volumes
 //			String url = (String.format(https://www.googleapis.com/books/v1
-//							/%s -> volumes or users
+//							/%s -> "volumes" or "users"
 //							?q= -> beginning of query
-//							%s -> search for volumes that contain this string
+//							%s -> search for volumes that contain this string ex: "dogs"
 //							+
-//							%s -> inTitle, inAuthor, etc.
+//							%s -> "inTitle", "inAuthor", etc. (do you want to search for the previous value in title or author?)
 //							:keyes -> user input (text is in author name)
 //							&key=%s ->
 //							,
