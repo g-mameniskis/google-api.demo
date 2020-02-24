@@ -1,12 +1,18 @@
 package com.example.apidemo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class VolumeInfo {
 
-    private final String title;
-    private final String subTitle;
-    private final String authors;
-    private final String publisher;
-    private final String publishedDate;
+    @Id
+    private Long id;
+    private String title;
+    private String subTitle;
+    private String authors;
+    private String publisher;
+    private String publishedDate;
 
     public VolumeInfo(String title, String subTitle, String authors, String publisher, String publishedDate) {
         this.title = title;
@@ -34,5 +40,13 @@ public class VolumeInfo {
 
     public String getPublishedDate() {
         return publishedDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

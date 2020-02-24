@@ -1,13 +1,19 @@
 package com.example.apidemo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class ImageLinks {
 
-    private final String smallThumbnail;
-    private final String thumbnail;
-    private final String small;
-    private final String medium;
-    private final String large;
-    private final String extraLarge;
+    @Id
+    private Long id;
+    private String smallThumbnail;
+    private String thumbnail;
+    private String small;
+    private String medium;
+    private String large;
+    private String extraLarge;
 
     public ImageLinks(String smallThumbnail, String thumbnail, String small, String medium, String large, String extraLarge) {
         this.smallThumbnail = smallThumbnail;
@@ -40,5 +46,13 @@ public class ImageLinks {
 
     public String getExtraLarge() {
         return extraLarge;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

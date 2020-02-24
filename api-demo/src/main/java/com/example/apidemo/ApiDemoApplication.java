@@ -34,7 +34,11 @@ public class ApiDemoApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			Book quote = restTemplate.getForObject(
+			Object quote = restTemplate.getForObject(
+					//"https://gturnquist-quoters.cfapps.io/api/random", Quote.class); //---> Original URL
+					"https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38", Object.class); // Google Books URL
+			System.out.println(quote);
+			Book quotee = restTemplate.getForObject(
 					//"https://gturnquist-quoters.cfapps.io/api/random", Quote.class); //---> Original URL
 					"https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38", Book.class); // Google Books URL
 //			https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey ---> Google Books Example for Volumes
