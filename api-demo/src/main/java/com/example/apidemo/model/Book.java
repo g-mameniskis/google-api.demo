@@ -5,25 +5,17 @@ public class Book {
 //    Example:
 //    https://www.googleapis.com/books/v1/volumes/gK98gXR8onwC
 
-    private final String id;
-    private final VolumeInfo volumeInfo;
-    private final ImageLinks imageLinks;
+    private Items items;
 
-    public Book(String id, VolumeInfo volumeInfo, ImageLinks imageLinks) {
-        this.id = id;
-        this.volumeInfo = volumeInfo;
-        this.imageLinks = imageLinks;
+    public Book() {
+        this.items = null;
     }
 
-    public String getId() {
-        return id;
+    public Book(Items items) {
+        this.items = items;
     }
 
-    public VolumeInfo getVolumeInfo() {
-        return volumeInfo;
-    }
-
-    public ImageLinks getImageLinks() {
-        return imageLinks;
+    public Items getItems() {
+        return items;
     }
 }

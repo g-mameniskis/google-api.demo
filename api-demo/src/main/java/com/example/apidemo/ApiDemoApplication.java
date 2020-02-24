@@ -1,5 +1,6 @@
 package com.example.apidemo;
 
+import com.example.apidemo.model.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +20,7 @@ public class ApiDemoApplication {
 	private String var3;
 	private String var4;
 
-	
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiDemoApplication.class, args);
@@ -33,8 +34,9 @@ public class ApiDemoApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			Quote quote = restTemplate.getForObject(
-					"https://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+			Book quote = restTemplate.getForObject(
+					//"https://gturnquist-quoters.cfapps.io/api/random", Quote.class); //---> Original URL
+					"https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38", Book.class); // Google Books URL
 //			https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey ---> Google Books Example for Volumes
 //			String url = (String.format(https://www.googleapis.com/books/v1
 //							/%s -> "volumes" or "users"
