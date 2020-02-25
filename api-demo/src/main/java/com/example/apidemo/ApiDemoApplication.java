@@ -1,6 +1,8 @@
 package com.example.apidemo;
 
+import com.example.apidemo.dao.BookRepository;
 import com.example.apidemo.model.Book;
+import com.example.apidemo.model.BookQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -34,13 +36,13 @@ public class ApiDemoApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			Object quote = restTemplate.getForObject(
+			BookQuery bookInformation = restTemplate.getForObject(
 					//"https://gturnquist-quoters.cfapps.io/api/random", Quote.class); //---> Original URL
-					"https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38", Object.class); // Google Books URL
-			System.out.println(quote);
-			Book quotee = restTemplate.getForObject(
-					//"https://gturnquist-quoters.cfapps.io/api/random", Quote.class); //---> Original URL
-					"https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38", Book.class); // Google Books URL
+					"https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38", BookQuery.class); // Google Books URL
+			//System.out.println(quote);
+//			Book quotee = restTemplate.getForObject(
+//					//"https://gturnquist-quoters.cfapps.io/api/random", Quote.class); //---> Original URL
+//					"https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38", Book.class); // Google Books URL
 //			https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey ---> Google Books Example for Volumes
 //			String url = (String.format(https://www.googleapis.com/books/v1
 //							/%s -> "volumes" or "users"
@@ -54,7 +56,14 @@ public class ApiDemoApplication {
 //							firstVariable, secondVariable, thirdVariable, fourthVariable)); ---> Google books example with variables
 //			firs variable  = volumes OR
 //			https://www.googleapis.com/books/v1/mylibrary/bookshelves/0/addVolume?volumeId=NRWlitmahXkC&key=yourAPIKey
-			log.info(quote.toString());
+			log.info(bookInformation.toString());
+		};
+	}
+
+	@Bean
+	public CommandLineRunner initDatabase(BookRepository repository) {
+		return args -> {
+			log.info("saving entity [" + repository.save(new Book())+ "]");
 		};
 	}
 }
