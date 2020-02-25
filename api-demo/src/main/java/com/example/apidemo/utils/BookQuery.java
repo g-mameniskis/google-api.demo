@@ -1,0 +1,73 @@
+package com.example.apidemo.utils;
+
+public class BookQuery {
+    private String domain;
+    private String searchCategory;
+    private String searchTerm;
+    private String searchTopic;
+    private String searchTopicValue;
+    private String apiKey;
+
+    public BookQuery(String domain, String searchCategory, String searchTerm, String searchTopic, String searchTopicValue, String apiKey) {
+        this.domain = domain;
+        this.searchCategory = searchCategory;
+        this.searchTerm = searchTerm;
+        this.searchTopic = searchTopic;
+        this.searchTopicValue = searchTopicValue;
+        this.apiKey = apiKey;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public String getSearchCategory() {
+        return searchCategory;
+    }
+
+    public void setSearchCategory(String searchCategory) {
+        this.searchCategory = searchCategory;
+    }
+
+    public String getSearchTerm() {
+        return searchTerm;
+    }
+
+    public void setSearchTerm(String searchTerm) {
+        this.searchTerm = searchTerm;
+    }
+
+    public String getSearchTopic() {
+        return searchTopic;
+    }
+
+    public void setSearchTopic(String searchTopic) {
+        this.searchTopic = searchTopic;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append("https://www.googleapis.com/books/v1")
+                .append("/" + this.searchCategory)
+                .append("?q=" + searchTerm)
+                .append(searchTopic != null ? "+in" + searchTopic + ":" : "")
+                .append(searchTopicValue != null ? "+in" + searchTopicValue + ":" : "")
+                .append(apiKey)
+                .toString();
+    }
+
+
+}

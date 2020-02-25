@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class BookQuery {
+public class BookQueryResult {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -13,7 +13,7 @@ public class BookQuery {
     @OneToMany
     private List<Book> items;
 
-    public BookQuery() {
+    public BookQueryResult() {
     }
 
     public Long getId() {

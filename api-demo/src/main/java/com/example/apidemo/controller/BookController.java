@@ -2,7 +2,7 @@ package com.example.apidemo.controller;
 
 import com.example.apidemo.ApiDemoApplication;
 import com.example.apidemo.model.Book;
-import com.example.apidemo.model.BookQuery;
+import com.example.apidemo.model.BookQueryResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,10 +26,10 @@ public class BookController {
     }
 
     @RequestMapping(value = "/books", method = RequestMethod.GET, produces = "application/json")
-    public BookQuery firstPage() {
+    public BookQueryResult firstPage() {
 
-        BookQuery bookQuery = new BookQuery();
+        BookQueryResult bookQueryResult = new BookQueryResult();
 
-        return bookQuery;
+        return bookQueryResult;
     }
 }
