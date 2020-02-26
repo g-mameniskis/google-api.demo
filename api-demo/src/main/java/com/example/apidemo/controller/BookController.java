@@ -1,35 +1,47 @@
 package com.example.apidemo.controller;
 
-import com.example.apidemo.ApiDemoApplication;
 import com.example.apidemo.model.Book;
-import com.example.apidemo.model.BookQueryResult;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.apidemo.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("/book-controller")
 public class BookController {
+    private BookService bookService;
 
-    private static final Logger log = LoggerFactory.getLogger(ApiDemoApplication.class);
-
-
-    private List<Book> books = createList();
-
-    private List<Book> createList() {
-        return null;
+    @Autowired
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET, produces = "application/json")
-    public BookQueryResult firstPage() {
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<Book>> findAll() {
+        return new ResponseEntity<>(bookService.findAll(), HttpStatus.OK);
+    }
 
-        BookQueryResult bookQueryResult = new BookQueryResult();
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Book> findOne(@PathVariable Long id) {
+        return new ResponseEntity<>(bookService.findOne(id), HttpStatus.OK);
+    }
 
-        return bookQueryResult;
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Book> delete(@PathVariable Long id) {
+        return new ResponseEntity<>(bookService.delete(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<Book> create(@RequestBody Book book) {
+        return new ResponseEntity<>(bookService.create(book), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Book> update(@PathVariable Long id, @RequestBody Book newBookData) {
+        return new ResponseEntity<>(bookService.update(id, newBookData), HttpStatus.OK);
     }
 }

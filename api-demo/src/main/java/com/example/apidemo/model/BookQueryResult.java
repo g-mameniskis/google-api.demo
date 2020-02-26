@@ -1,5 +1,8 @@
 package com.example.apidemo.model;
 
+import com.example.apidemo.utils.Jsonifier;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +13,8 @@ public class BookQueryResult {
     private Long id;
     private String kind;
     private Integer totalItems;
-    @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(targetEntity = BookQueryResult.class)
     private List<Book> items;
 
     public BookQueryResult() {
@@ -50,11 +54,13 @@ public class BookQueryResult {
 
     @Override
     public String toString() {
-        return "BookQuery{" +
-                "id=" + id +
-                ", kind='" + kind + '\'' +
-                ", totalItems=" + totalItems +
-                ", items=" + items +
-                '}';
+        return Jsonifier.toJson(this);
+
+//        return "BookQuery{" +
+//                "id=" + id +
+//                ", kind='" + kind + '\'' +
+//                ", totalItems=" + totalItems +
+//                ", items=" + items +
+//                '}';
     }
 }

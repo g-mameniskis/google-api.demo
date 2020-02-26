@@ -20,4 +20,23 @@ public class AccessInfo {
     private String webReaderLink;
     private String accessViewStatus;
     private Boolean quoteSharingAllowed;
+
+    public AccessInfo() {
+    }
+
+    @Override
+    public String toString() {
+        return "AccessInfo{" +
+                "country='" + country + '\'' +
+                ", viewability='" + viewability + '\'' +
+                ", embeddable=" + embeddable +
+                ", publicDomain=" + publicDomain +
+                ", textToSpeechPermission='" + textToSpeechPermission + '\'' +
+                ", epub=" + epub +
+                ", pdf=" + pdf +
+                ", webReaderLink='" + webReaderLink + '\'' +
+                ", accessViewStatus='" + accessViewStatus + '\'' +
+                ", quoteSharingAllowed=" + quoteSharingAllowed +
+                '}';
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.apidemo.model;
 
+import com.example.apidemo.utils.Jsonifier;
+
 import javax.persistence.*;
 import java.util.HashMap;
 
@@ -93,15 +95,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id='" + id + '\'' +
-                ", kind='" + kind + '\'' +
-                ", etag='" + etag + '\'' +
-                ", selfLink='" + selfLink + '\'' +
-                ", volumeInfo=" + volumeInfo +
-                ", saleInfo=" + saleInfo +
-                ", accessInfo=" + accessInfo +
-                ", searchInfo=" + searchInfo +
-                '}';
+        return Jsonifier.toJson(this);
     }
 }

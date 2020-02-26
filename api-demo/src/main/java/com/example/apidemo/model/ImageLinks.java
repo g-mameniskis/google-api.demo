@@ -55,4 +55,20 @@ public class ImageLinks {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public ImageLinks() {
+    }
+
+    @Override
+    public String toString() {
+        return "ImageLinks{" +
+                "id=" + id +
+                ", smallThumbnail='" + smallThumbnail + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                ", small='" + small + '\'' +
+                ", medium='" + medium + '\'' +
+                ", large='" + large + '\'' +
+                ", extraLarge='" + extraLarge + '\'' +
+                '}';
+    }
 }

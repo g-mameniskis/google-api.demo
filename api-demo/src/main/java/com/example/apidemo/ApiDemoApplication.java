@@ -1,7 +1,6 @@
 package com.example.apidemo;
 
-import com.example.apidemo.dao.BookRepository;
-import com.example.apidemo.model.Book;
+import com.example.apidemo.dao.BookQueryResultRepository;
 import com.example.apidemo.model.BookQueryResult;
 import com.example.apidemo.utils.BookQueryFactory;
 import org.slf4j.Logger;
@@ -18,12 +17,6 @@ public class ApiDemoApplication {
 
     private static final Logger log = LoggerFactory.getLogger(ApiDemoApplication.class);
 
-    private String var1;
-    private String var2;
-    private String var3;
-    private String var4;
-
-
     public static void main(String[] args) {
         SpringApplication.run(ApiDemoApplication.class, args);
     }
@@ -36,22 +29,21 @@ public class ApiDemoApplication {
     @Bean
     public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
         return args -> {
-            String apiKey = "&key=AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38";
+            String apiKey = "AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38";
             String searchCategory = "volumes"; // "/users";
             String searchTerm = "flowers";
-            String searchTopic = "keyes"; // "intitle:keyes", "inlibrary:keyes"
+            String searchTopic = "author";
+            String searchTopicValue = "keyes"; // "intitle:keyes", "inlibrary:keyes"
 
-            BookQueryFactory factory = new BookQueryFactory(apiKey, searchCategory);
+            BookQueryFactory factory = new BookQueryFactory(apiKey);
 
-            BookQueryResult bookInformation = factory.search(searchTerm, searchTopic);
+            BookQueryResult bookInformation = factory.search(searchCategory, searchTerm, searchTopic, searchTopicValue);
             log.info(bookInformation.toString());
         };
     }
 
     @Bean
-    public CommandLineRunner initDatabase(BookRepository repository) {
-        return args -> {
-            log.info("saving entity [" + repository.save(new Book()) + "]");
-        };
+    public CommandLineRunner initDatabase(BookQueryResultRepository repository) {
+        return null;
     }
 }

@@ -64,10 +64,16 @@ public class BookQuery {
                 .append("/" + this.searchCategory)
                 .append("?q=" + searchTerm)
                 .append(searchTopic != null ? "+in" + searchTopic + ":" : "")
-                .append(searchTopicValue != null ? "+in" + searchTopicValue + ":" : "")
-                .append(apiKey)
+                .append(searchTopicValue != null ? searchTopicValue : "")
+                .append("&key=" + apiKey)
                 .toString();
     }
 
+    public String getSearchTopicValue() {
+        return searchTopicValue;
+    }
 
+    public void setSearchTopicValue(String searchTopicValue) {
+        this.searchTopicValue = searchTopicValue;
+    }
 }

@@ -1,15 +1,17 @@
 package com.example.apidemo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Items {
 //    Example:
 //    https://www.googleapis.com/books/v1/volumes/gK98gXR8onwC
 
+
+    // I BELIEVE I CAN SAFELY DELETE THIS CLASS
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     @OneToOne
