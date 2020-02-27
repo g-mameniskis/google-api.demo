@@ -23,10 +23,10 @@ public class AccessInfo {
     private Book book;
 
     @ElementCollection
-    private Map<String, Boolean> epub;
+    private Map<String, String> epub;
 
     @ElementCollection
-    private Map<String, Boolean> pdf;
+    private Map<String, String> pdf;
     private String webReaderLink;
     private String accessViewStatus;
     private Boolean quoteSharingAllowed;
@@ -82,19 +82,19 @@ public class AccessInfo {
         this.book = book;
     }
 
-    public Map<String, Boolean> getEpub() {
+    public Map<String, String> getEpub() {
         return epub;
     }
 
-    public void setEpub(Map<String, Boolean> epub) {
+    public void setEpub(Map<String, String> epub) {
         this.epub = epub;
     }
 
-    public Map<String, Boolean> getPdf() {
+    public Map<String, String> getPdf() {
         return pdf;
     }
 
-    public void setPdf(Map<String, Boolean> pdf) {
+    public void setPdf(Map<String, String> pdf) {
         this.pdf = pdf;
     }
 
