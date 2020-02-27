@@ -16,7 +16,7 @@ public class BookQueryResult {
     private String kind;
     private Integer totalItems;
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    @OneToMany(targetEntity = Book.class)
+    @OneToMany(targetEntity = BookQueryResult.class)
     private List<Book> items;
 
     public BookQueryResult() {
