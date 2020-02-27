@@ -1,32 +1,48 @@
 package com.example.apidemo.model;
 
 import com.example.apidemo.utils.Jsonifier;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_id")
     private String id;
     private String kind;
     private String etag;
     private String selfLink;
 
-    @OneToOne
+    @OneToOne(mappedBy = "book")
     private VolumeInfo volumeInfo;
 
-    @OneToOne
+    @OneToOne(mappedBy = "book")
     private SaleInfo saleInfo;
 
-    @OneToOne
+    @OneToOne(mappedBy = "book")
     private AccessInfo accessInfo;
 
     @ElementCollection
-    private HashMap<String, String> searchInfo;
+    private Map<String, String> searchInfo;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "book_query_result_id")
+    private BookQueryResult bookQueryResult;
 
     public Book() {
+    }
+
+    public BookQueryResult getBookQueryResult() {
+        return bookQueryResult;
+    }
+
+    public void setBookQueryResult(BookQueryResult bookQueryResult) {
+        this.bookQueryResult = bookQueryResult;
     }
 
     public String getId() {
@@ -85,11 +101,11 @@ public class Book {
         this.accessInfo = accessInfo;
     }
 
-    public HashMap<String, String> getSearchInfo() {
+    public Map<String, String> getSearchInfo() {
         return searchInfo;
     }
 
-    public void setSearchInfo(HashMap<String, String> searchInfo) {
+    public void setSearchInfo(Map<String, String> searchInfo) {
         this.searchInfo = searchInfo;
     }
 

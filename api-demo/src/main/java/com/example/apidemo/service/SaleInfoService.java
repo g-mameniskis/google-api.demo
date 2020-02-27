@@ -1,12 +1,10 @@
 package com.example.apidemo.service;
 
 import com.example.apidemo.dao.SaleInfoRepository;
-import com.example.apidemo.model.ReadingMode;
 import com.example.apidemo.model.SaleInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.parsers.SAXParser;
 import java.util.ArrayList;
 import java.util.List;
 

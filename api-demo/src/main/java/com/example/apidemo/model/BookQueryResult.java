@@ -7,16 +7,18 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class BookQueryResult {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "book_query_result_id")
     private Long id;
     private String kind;
     private Integer totalItems;
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    @OneToMany(targetEntity = BookQueryResult.class)
+
+    @OneToMany(mappedBy = "bookQueryResult")
     private List<Book> items;
 
     public BookQueryResult() {
@@ -57,12 +59,5 @@ public class BookQueryResult {
     @Override
     public String toString() {
         return Jsonifier.toJson(this);
-
-//        return "BookQuery{" +
-//                "id=" + id +
-//                ", kind='" + kind + '\'' +
-//                ", totalItems=" + totalItems +
-//                ", items=" + items +
-//                '}';
     }
 }

@@ -1,26 +1,36 @@
 package com.example.apidemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 public class VolumeInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "volume_info_id")
     private Long id;
+
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     private String title;
     private String subTitle;
-    @OneToMany
+
+    @ElementCollection
     private List<String> authors;
     private String publisher;
     private String publishedDate;
 
-    @OneToMany
+    @OneToMany(mappedBy = "volumeInfo")
     private List<IndustryIdentifier> industryIdentifiers;
-    @OneToOne(targetEntity = VolumeInfo.class)
-    private ReadingMode readingMode;
+
+    @ElementCollection
+    private Map<String, String> readingMode;
     private Integer pageCount;
     private String printType;
     private Integer averageRating;
@@ -28,8 +38,12 @@ public class VolumeInfo {
     private String maturityRating;
     private Boolean allowAnonLogging;
     private String contentVersion;
-    private HashMap<String, Boolean> panelizationSummary;
-    private HashMap<String, String> imageLinks;
+
+    @ElementCollection
+    private Map<String, Boolean> panelizationSummary;
+
+    @ElementCollection
+    private Map<String, String> imageLinks;
     private String language;
     private String previewLink;
     private String infoLink;
@@ -98,11 +112,19 @@ public class VolumeInfo {
         return pageCount;
     }
 
-    public ReadingMode getReadingMode() {
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Map<String, String> getReadingMode() {
         return readingMode;
     }
 
-    public void setReadingMode(ReadingMode readingMode) {
+    public void setReadingMode(Map<String, String> readingMode) {
         this.readingMode = readingMode;
     }
 
@@ -158,19 +180,19 @@ public class VolumeInfo {
         this.contentVersion = contentVersion;
     }
 
-    public HashMap<String, Boolean> getPanelizationSummary() {
+    public Map<String, Boolean> getPanelizationSummary() {
         return panelizationSummary;
     }
 
-    public void setPanelizationSummary(HashMap<String, Boolean> panelizationSummary) {
+    public void setPanelizationSummary(Map<String, Boolean> panelizationSummary) {
         this.panelizationSummary = panelizationSummary;
     }
 
-    public HashMap<String, String> getImageLinks() {
+    public Map<String, String> getImageLinks() {
         return imageLinks;
     }
 
-    public void setImageLinks(HashMap<String, String> imageLinks) {
+    public void setImageLinks(Map<String, String> imageLinks) {
         this.imageLinks = imageLinks;
     }
 

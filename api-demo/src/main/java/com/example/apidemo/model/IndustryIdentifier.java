@@ -1,15 +1,19 @@
 package com.example.apidemo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class IndustryIdentifier {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "volume_info_id")
+    @JsonIgnore
+    private VolumeInfo volumeInfo;
     private String type;
     private String identifier;
 

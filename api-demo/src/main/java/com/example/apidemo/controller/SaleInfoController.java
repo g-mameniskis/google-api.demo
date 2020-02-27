@@ -1,6 +1,5 @@
 package com.example.apidemo.controller;
 
-import com.example.apidemo.model.ReadingMode;
 import com.example.apidemo.model.SaleInfo;
 import com.example.apidemo.service.SaleInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

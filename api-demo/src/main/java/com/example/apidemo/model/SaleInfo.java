@@ -1,9 +1,8 @@
 package com.example.apidemo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class SaleInfo {
@@ -13,6 +12,12 @@ public class SaleInfo {
     private String country;
     private String saleability;
     private Boolean isEbook;
+
+
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     public SaleInfo() {
     }
