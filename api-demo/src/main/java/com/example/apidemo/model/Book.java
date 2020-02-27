@@ -14,7 +14,7 @@ public class Book {
     private String etag;
     private String selfLink;
 
-    @OneToOne(targetEntity = Book.class)
+    @OneToOne
     private VolumeInfo volumeInfo;
 
     @OneToOne
@@ -23,7 +23,7 @@ public class Book {
     @OneToOne
     private AccessInfo accessInfo;
 
-    @OneToOne(targetEntity = Book.class)
+    @ElementCollection
     private HashMap<String, String> searchInfo;
 
     public Book() {

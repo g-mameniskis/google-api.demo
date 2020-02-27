@@ -12,12 +12,12 @@ public class VolumeInfo {
 
     private String title;
     private String subTitle;
-    @OneToMany(targetEntity = VolumeInfo.class)
+    @OneToMany
     private List<String> authors;
     private String publisher;
     private String publishedDate;
 
-    @OneToMany(targetEntity = VolumeInfo.class)
+    @OneToMany
     private List<IndustryIdentifier> industryIdentifiers;
     @OneToOne(targetEntity = VolumeInfo.class)
     private ReadingMode readingMode;
