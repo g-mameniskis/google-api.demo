@@ -1,6 +1,8 @@
 package com.example.apidemo.model;
 
 import com.example.apidemo.utils.Jsonifier;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -14,18 +16,10 @@ public class BookQueryResult {
     private String kind;
     private Integer totalItems;
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    @OneToMany(targetEntity = BookQueryResult.class)
+    @OneToMany(targetEntity = Book.class)
     private List<Book> items;
 
     public BookQueryResult() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getKind() {
@@ -50,6 +44,14 @@ public class BookQueryResult {
 
     public void setItems(List<Book> items) {
         this.items = items;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

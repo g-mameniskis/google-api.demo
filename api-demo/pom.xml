@@ -21,6 +21,8 @@
 // GOOGLE API DEPENDENCIES
 
 	<dependencyManagement>
+
+
 		<dependencies>
 			<dependency>
 				<groupId>com.google.cloud</groupId>

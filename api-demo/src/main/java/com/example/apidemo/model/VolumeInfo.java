@@ -20,7 +20,7 @@ public class VolumeInfo {
     @OneToMany(targetEntity = VolumeInfo.class)
     private List<IndustryIdentifier> industryIdentifiers;
     @OneToOne(targetEntity = VolumeInfo.class)
-    private ReadingModes readingModes;
+    private ReadingMode readingMode;
     private Integer pageCount;
     private String printType;
     private Integer averageRating;
@@ -98,12 +98,12 @@ public class VolumeInfo {
         return pageCount;
     }
 
-    public ReadingModes getReadingModes() {
-        return readingModes;
+    public ReadingMode getReadingMode() {
+        return readingMode;
     }
 
-    public void setReadingModes(ReadingModes readingModes) {
-        this.readingModes = readingModes;
+    public void setReadingMode(ReadingMode readingMode) {
+        this.readingMode = readingMode;
     }
 
     public void setPageCount(Integer pageCount) {
@@ -216,7 +216,7 @@ public class VolumeInfo {
                 ", publisher='" + publisher + '\'' +
                 ", publishedDate='" + publishedDate + '\'' +
                 ", industryIdentifiers=" + industryIdentifiers +
-                ", readingModes=" + readingModes +
+                ", readingModes=" + readingMode +
                 ", pageCount=" + pageCount +
                 ", printType='" + printType + '\'' +
                 ", averageRating=" + averageRating +

@@ -1,11 +1,19 @@
 package com.example.apidemo.model;
 
-public class ReadingModes {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class ReadingMode {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Boolean text;
     private Boolean image;
 
-    public ReadingModes() {
+    public ReadingMode() {
     }
 
     public Boolean getText() {
