@@ -26,16 +26,19 @@ public class AccessInfoController {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/{id}")
     public ResponseEntity<AccessInfo> findOne(@PathVariable Long id) {
         return new ResponseEntity<>(service.findOne(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<AccessInfo> delete(@PathVariable Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/")
     public ResponseEntity<AccessInfo> create(@RequestBody AccessInfo accessInfo) {
         return new ResponseEntity<>(service.create(accessInfo), HttpStatus.CREATED);

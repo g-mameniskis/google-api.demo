@@ -21,21 +21,25 @@ public class ImageLinksController {
         this.imageLinksService = imageLinksService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/all")
     public ResponseEntity<List<ImageLinks>> findAll() {
         return new ResponseEntity<>(imageLinksService.findAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/{id}")
     public ResponseEntity<ImageLinks> findOne(@PathVariable Long id) {
         return new ResponseEntity<>(imageLinksService.findOne(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<ImageLinks> delete(@PathVariable Long id) {
         return new ResponseEntity<>(imageLinksService.delete(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/")
     public ResponseEntity<ImageLinks> create(@RequestBody ImageLinks imageLinks) {
         return new ResponseEntity<>(imageLinksService.create(imageLinks), HttpStatus.CREATED);

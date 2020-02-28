@@ -21,21 +21,25 @@ public class SaleInfoController {
         this.saleInfoService = saleInfoService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/all")
     public ResponseEntity<List<SaleInfo>> findAll() {
         return new ResponseEntity<>(saleInfoService.findAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/{id}")
     public ResponseEntity<SaleInfo> findOne(@PathVariable Long id) {
         return new ResponseEntity<>(saleInfoService.findOne(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<SaleInfo> delete(@PathVariable Long id) {
         return new ResponseEntity<>(saleInfoService.delete(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/")
     public ResponseEntity<SaleInfo> create(@RequestBody SaleInfo saleInfo) {
         return new ResponseEntity<>(saleInfoService.create(saleInfo), HttpStatus.CREATED);

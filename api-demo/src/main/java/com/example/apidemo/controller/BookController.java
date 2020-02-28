@@ -20,26 +20,31 @@ public class BookController {
         this.bookService = bookService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/all")
     public ResponseEntity<List<Book>> findAll() {
         return new ResponseEntity<>(bookService.findAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/{id}")
     public ResponseEntity<Book> findOne(@PathVariable Long id) {
         return new ResponseEntity<>(bookService.findOne(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Book> delete(@PathVariable Long id) {
         return new ResponseEntity<>(bookService.delete(id), HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @CrossOrigin
+    @PostMapping(value = "/")
     public ResponseEntity<Book> create(@RequestBody Book book) {
         return new ResponseEntity<>(bookService.create(book), HttpStatus.CREATED);
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<Book> update(@PathVariable Long id, @RequestBody Book newBookData) {
         return new ResponseEntity<>(bookService.update(id, newBookData), HttpStatus.OK);

@@ -22,21 +22,25 @@ public class IndustryIdentifierController {
         this.industryIdentifierService = industryIdentifierService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/all")
     public ResponseEntity<List<IndustryIdentifier>> findAll() {
         return new ResponseEntity<>(industryIdentifierService.findAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/{id}")
     public ResponseEntity<IndustryIdentifier> findOne(@PathVariable Long id) {
         return new ResponseEntity<>(industryIdentifierService.findOne(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<IndustryIdentifier> delete(@PathVariable Long id) {
         return new ResponseEntity<>(industryIdentifierService.delete(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/")
     public ResponseEntity<IndustryIdentifier> create(@RequestBody IndustryIdentifier industryIdentifier) {
         return new ResponseEntity<>(industryIdentifierService.create(industryIdentifier), HttpStatus.CREATED);

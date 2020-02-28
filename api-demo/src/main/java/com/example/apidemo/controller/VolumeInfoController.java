@@ -23,21 +23,25 @@ public class VolumeInfoController {
         this.volumeInfoService = volumeInfoService;
     }
 
+    @CrossOrigin
     @GetMapping(value = "/all")
     public ResponseEntity<List<VolumeInfo>> findAll() {
         return new ResponseEntity<>(volumeInfoService.findAll(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping(value = "/{id}")
     public ResponseEntity<VolumeInfo> findOne(@PathVariable Long id) {
         return new ResponseEntity<>(volumeInfoService.findOne(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<VolumeInfo> delete(@PathVariable Long id) {
         return new ResponseEntity<>(volumeInfoService.delete(id), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/")
     public ResponseEntity<VolumeInfo> create(@RequestBody VolumeInfo volumeInfo) {
         return new ResponseEntity<>(volumeInfoService.create(volumeInfo), HttpStatus.CREATED);

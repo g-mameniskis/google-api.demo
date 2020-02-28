@@ -20,10 +20,6 @@ public class BookService {
         this.repository = repository;
     }
 
-    public Book addBook(Book book) {
-        return repository.save(book);
-    }
-
     public List<Book> findAll() {
         Iterable<Book> bookIterable = repository.findAll();
         List<Book> result = new ArrayList<>();
