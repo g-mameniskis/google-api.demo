@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Returns specific information about books via querying googlebookapi
+ */
 @Service
 public class BookService {
     private BookQueryFactory factory;

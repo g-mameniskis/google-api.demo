@@ -1,5 +1,6 @@
 package com.example.apidemo.utils;
 
+import com.example.apidemo.model.BookQuery;
 import com.example.apidemo.model.BookQueryResult;
 import org.springframework.web.client.RestTemplate;
 

@@ -1,5 +1,7 @@
 package com.example.apidemo.utils;
 
+import com.example.apidemo.model.BookQuery;
+
 public class BookQueryBuilder {
     private String domain;
     private String searchCategory;

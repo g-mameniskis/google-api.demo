@@ -1,6 +1,12 @@
-package com.example.apidemo.utils;
+package com.example.apidemo.model;
 
+import javax.persistence.*;
+
+@Entity
 public class BookQuery {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "book_query_id")
     private String domain;
     private String searchCategory;
     private String searchTerm;

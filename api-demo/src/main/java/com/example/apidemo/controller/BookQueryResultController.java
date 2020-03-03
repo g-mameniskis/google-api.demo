@@ -2,7 +2,7 @@ package com.example.apidemo.controller;
 
 import com.example.apidemo.model.BookQueryResult;
 import com.example.apidemo.service.BookQueryResultService;
-import com.example.apidemo.utils.BookQuery;
+import com.example.apidemo.model.BookQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

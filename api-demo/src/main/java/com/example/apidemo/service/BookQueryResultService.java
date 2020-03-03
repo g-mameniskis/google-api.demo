@@ -2,7 +2,7 @@ package com.example.apidemo.service;
 
 import com.example.apidemo.dao.BookQueryResultRepository;
 import com.example.apidemo.model.BookQueryResult;
-import com.example.apidemo.utils.BookQuery;
+import com.example.apidemo.model.BookQuery;
 import com.example.apidemo.utils.BookQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
