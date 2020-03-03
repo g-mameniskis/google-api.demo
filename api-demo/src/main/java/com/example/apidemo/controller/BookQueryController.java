@@ -1,6 +1,7 @@
 package com.example.apidemo.controller;
 
 import com.example.apidemo.model.BookQuery;
+import com.example.apidemo.utils.BookQueryFactoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,9 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/book-query-controller")
 public class BookQueryController {
-    private BookQueryService bookQueryService;
+    private BookQueryFactoryService bookQueryService;
 
-    public BookQueryController(BookQueryService bookQueryService) {
+    public BookQueryController(BookQueryFactoryService bookQueryService) {
         this.bookQueryService = bookQueryService;
     }
 

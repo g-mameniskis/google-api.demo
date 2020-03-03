@@ -2,7 +2,7 @@ package com.example.apidemo;
 
 import com.example.apidemo.dao.BookQueryResultRepository;
 import com.example.apidemo.model.BookQueryResult;
-import com.example.apidemo.utils.BookQueryFactory;
+import com.example.apidemo.utils.BookQueryFactoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -35,7 +35,7 @@ public class ApiDemoApplication {
             String searchTopic = "author";
             String searchTopicValue = "keyes"; // "intitle:keyes", "inlibrary:keyes"
 
-            BookQueryFactory factory = new BookQueryFactory(apiKey);
+            BookQueryFactoryService factory = new BookQueryFactoryService(apiKey);
 
             BookQueryResult bookInformation = factory.search(searchCategory, searchTerm, searchTopic, searchTopicValue);
             log.info(bookInformation.toString());

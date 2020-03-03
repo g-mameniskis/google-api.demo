@@ -2,15 +2,17 @@ package com.example.apidemo.utils;
 
 import com.example.apidemo.model.BookQuery;
 import com.example.apidemo.model.BookQueryResult;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-public class BookQueryFactory {
+@Service
+public class BookQueryFactoryService {
     private final BookQueryBuilder bookQueryBuilder;
 
-    public BookQueryFactory(String apiKey) {
+    public BookQueryFactoryService(String apiKey) {
         this.bookQueryBuilder = new BookQueryBuilder().setApiKey(apiKey);
     }
-    public BookQueryFactory() {
+    public BookQueryFactoryService() {
         this("AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38");
     }
 

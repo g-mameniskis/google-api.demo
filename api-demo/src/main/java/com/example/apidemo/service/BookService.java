@@ -2,7 +2,7 @@ package com.example.apidemo.service;
 
 import com.example.apidemo.dao.BookRepository;
 import com.example.apidemo.model.Book;
-import com.example.apidemo.utils.BookQueryFactory;
+import com.example.apidemo.utils.BookQueryFactoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,12 @@ import java.util.List;
  */
 @Service
 public class BookService {
-    private BookQueryFactory factory;
+    private BookQueryFactoryService factory;
     private BookRepository repository;
 
     @Autowired
     public BookService(BookRepository repository) {
-        this.factory = new BookQueryFactory();
+        this.factory = new BookQueryFactoryService();
         this.repository = repository;
     }
 

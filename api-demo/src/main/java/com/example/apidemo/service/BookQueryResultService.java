@@ -3,7 +3,7 @@ package com.example.apidemo.service;
 import com.example.apidemo.dao.BookQueryResultRepository;
 import com.example.apidemo.model.BookQueryResult;
 import com.example.apidemo.model.BookQuery;
-import com.example.apidemo.utils.BookQueryFactory;
+import com.example.apidemo.utils.BookQueryFactoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,7 @@ public class BookQueryResultService {
     }
 
     public BookQueryResult saveBookQueryResult(String searchCategory, String searchTerm, String searchTopic, String searchTopicValue) {
-        BookQueryFactory bookQueryFactory = new BookQueryFactory(); // hardcode api key?
+        BookQueryFactoryService bookQueryFactory = new BookQueryFactoryService(); // hardcode api key?
         BookQueryResult result = bookQueryFactory.search(searchCategory, searchTerm, searchTopic, searchTopicValue);
         repository.save(result);
         return result;
