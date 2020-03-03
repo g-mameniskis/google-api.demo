@@ -40,4 +40,13 @@ public class BookQueryFactoryService {
         System.out.println(url);
         return new RestTemplate().getForObject(url, BookQueryResult.class);
     }
+
+    public BookQueryResult findOne(Long id) {
+        return bookQueryResultRepository.findById(id).get();
+    }
+
+    public BookQueryResult update(Long id, BookQuery newBookQueryData) {
+        BookQueryResult bookQueryResult = findOne(id);
+        return null;
+    }
 }

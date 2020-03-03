@@ -3,6 +3,7 @@ package com.example.apidemo.service;
 import com.example.apidemo.dao.BookQueryRepository;
 import com.example.apidemo.model.BookQuery;
 import com.example.apidemo.model.BookQueryResult;
+import com.example.apidemo.utils.BookQueryBuilder;
 import com.example.apidemo.utils.BookQueryFactoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookQueryService {
     private BookQueryRepository bookQueryRepository;
-    private BookQueryFactoryService factory;
 
     @Autowired
-    public BookQueryService(BookQueryFactoryService factory, BookQueryRepository bookQueryRepository) {
+    public BookQueryService(BookQueryRepository bookQueryRepository) {
         this.bookQueryRepository = bookQueryRepository;
-        this.factory = factory;
+    }
+
+    public BookQuery create(String apiKey, String searchCategory, String searchTerm, String searchTopic, String searchTopicValue) {
+        return create(new BookQueryBuilder()
+                .setApiKey(apiKey)
+                .setSearchCategory(searchCategory)
+                .setSearchTerm(searchTerm)
+                .setSearchTopic(searchTopic)
+                .setSearchTopicValue(searchTopicValue)
+                .createBookQuery());
     }
 
     public BookQuery create(BookQuery bookQuery) {
