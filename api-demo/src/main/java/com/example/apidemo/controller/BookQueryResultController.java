@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("3000")
 @RestController
 @RequestMapping(value = "/book-query-result-controller")
 public class BookQueryResultController {
@@ -18,19 +19,19 @@ public class BookQueryResultController {
         this.service = service;
     }
 
-    @CrossOrigin
+    
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findOne(@PathVariable Long id) {
         return new ResponseEntity<>(service.findOne(id), HttpStatus.OK);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 
-    @CrossOrigin
+    
     @PostMapping(value = "/")
     public ResponseEntity<BookQueryResult> create(@RequestBody BookQuery query) {
         BookQueryResult result = service.saveBookQueryResult(query);

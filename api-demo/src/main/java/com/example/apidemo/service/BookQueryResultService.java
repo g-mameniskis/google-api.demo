@@ -26,7 +26,7 @@ public class BookQueryResultService {
 
     public BookQueryResult saveBookQueryResult(String searchCategory, String searchTerm, String searchTopic, String searchTopicValue) {
         BookQueryFactoryService bookQueryFactory = new BookQueryFactoryService(); // hardcode api key?
-        BookQueryResult result = bookQueryFactory.search(searchCategory, searchTerm, searchTopic, searchTopicValue);
+        BookQueryResult result = bookQueryFactory.searchUser(searchTerm);
         repository.save(result);
         return result;
     }

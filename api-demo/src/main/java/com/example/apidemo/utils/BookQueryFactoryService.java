@@ -2,10 +2,14 @@ package com.example.apidemo.utils;
 
 import com.example.apidemo.model.BookQuery;
 import com.example.apidemo.model.BookQueryResult;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Service
+
+/**
+ * The responsibility of this class is to
+ * configure the URL based on User-Input and
+ * fetch a respective BookQueryResult from googlebooksapi
+ */
 public class BookQueryFactoryService {
     private final BookQueryBuilder bookQueryBuilder;
 
@@ -16,15 +20,8 @@ public class BookQueryFactoryService {
         this("AIzaSyDoc04NEgl3jof9iclXzaoXvKlTI3gRS38");
     }
 
-    public BookQueryResult searchUser(String searchTerm, String searchTopic, String searchTopicValue) {
-        BookQuery query = bookQueryBuilder
-                .setSearchCategory("user")
-                .setSearchTerm(searchTerm)
-                .setSearchTopic(searchTopic)
-                .setSearchTopicValue(searchTopicValue)
-                .createBookQuery();
-        String url = query.toString();
-        return new RestTemplate().getForObject(url, BookQueryResult.class);
+    public BookQueryResult searchUser(String searchTerm) {
+        return search("volumes", searchTerm, "", "");
     }
 
 
@@ -39,14 +36,5 @@ public class BookQueryFactoryService {
         String url = query.toString();
         System.out.println(url);
         return new RestTemplate().getForObject(url, BookQueryResult.class);
-    }
-
-    public BookQueryResult findOne(Long id) {
-        return bookQueryResultRepository.findById(id).get();
-    }
-
-    public BookQueryResult update(Long id, BookQuery newBookQueryData) {
-        BookQueryResult bookQueryResult = findOne(id);
-        return null;
     }
 }
