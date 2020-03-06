@@ -2,6 +2,9 @@ package com.example.apidemo.utils;
 
 import com.example.apidemo.model.BookQuery;
 import com.example.apidemo.model.BookQueryResult;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -10,6 +13,8 @@ import org.springframework.web.client.RestTemplate;
  * configure the URL based on User-Input and
  * fetch a respective BookQueryResult from googlebooksapi
  */
+
+@Service
 public class BookQueryFactoryService {
     private final BookQueryBuilder bookQueryBuilder;
 

@@ -18,7 +18,6 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-// GOOGLE API DEPENDENCIES
 
 	<dependencyManagement>
 
@@ -41,7 +40,6 @@
 
 	</dependencyManagement>
 
-	// END GOOGLE API
 
 
 
